@@ -1,9 +1,7 @@
 export const createRandomData = () => {
-	const year = new Date().getFullYear();
-	const month = new Date().getMonth() + 1;
-	const day = new Date().getDate();
+	const currentTime = new Date().getTime()
 	return Array.from({ length: 15 }, (_, i) => ({
-		date: `${year}-${month}-${day + i + 1}`,
+		date: `${new Date(currentTime + i * 864 * 10 ** 5).toISOString().replace(/T.+/g, '')}`,
 		amount: Math.floor(Math.random() * 100),
 	}));
 };
